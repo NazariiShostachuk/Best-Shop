@@ -74,7 +74,6 @@ public class UserController {
                            @RequestParam String quantity){
 
         userService.getOrder(principal, commodityId, quantity);
-
         return "redirect:/home";
     }
 
@@ -85,9 +84,5 @@ public class UserController {
 
         return "redirect:/profile";
     }
-
-
-
-
 
 }

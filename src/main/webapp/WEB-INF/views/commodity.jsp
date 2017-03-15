@@ -48,7 +48,7 @@
         <br>
         <br>
 
-        <form:errors path="name"/>
+        <%--<form:errors path="name"/>--%>
 
         <form:errors path="description"/>
 
