@@ -23,4 +23,6 @@ public interface SubCategoryService {
 
     List<SubCategory> findSubCategoryValuesFromCategory(String name);
 
+    List<SubCategory> findSubCategoryValuesFromCategoryById(int id);
+
 }

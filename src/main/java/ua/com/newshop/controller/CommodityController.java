@@ -4,13 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import ua.com.newshop.entity.Commodity;
 import ua.com.newshop.service.CommodityService;
 import ua.com.newshop.service.SubCategoryService;
-import ua.com.newshop.validators.CommodityValidator;
 
 import javax.validation.Valid;
 
@@ -24,10 +22,6 @@ public class CommodityController {
     private CommodityService commodityService;
     @Autowired
     private SubCategoryService subCategoryService;
-    @InitBinder
-    protected void initBinder(WebDataBinder binder){
-        binder.setValidator(new CommodityValidator(commodityService));
-    }
 
     @RequestMapping(value = "/commodity", method = RequestMethod.GET)
     public String commodity(Model model) {

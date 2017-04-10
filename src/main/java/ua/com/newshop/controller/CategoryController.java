@@ -19,24 +19,24 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
-    @RequestMapping(value = "/category", method = RequestMethod.GET)
-    public String category(Model model) {
-        model.addAttribute("category", new Category());
-        model.addAttribute("categories", categoryService.findAll());
-        return "category";
-    }
+//    @RequestMapping(value = "/category", method = RequestMethod.GET)
+//    public String category(Model model) {
+//        model.addAttribute("category", new Category());
+//        model.addAttribute("categories", categoryService.findAll());
+//        return "category";
+//    }
 
-    @RequestMapping(value = "/newCategory", method = RequestMethod.POST)
-    public String newCategory(@ModelAttribute Category category) {
-        categoryService.save(category);
-        return "redirect:/category";
-    }
+//    @RequestMapping(value = "/newCategory", method = RequestMethod.POST)
+//    public String newCategory(@ModelAttribute Category category) {
+//        categoryService.save(category);
+//        return "/admin";
+//    }
 
-    @RequestMapping(value = "/deleteCategory/{id}", method = RequestMethod.GET)
-    public String delete(@PathVariable String id){
-        categoryService.delete(Integer.parseInt(id));
-        return "redirect:/category";
-    }
+//    @RequestMapping(value = "/deleteCategory/{id}", method = RequestMethod.GET)
+//    public String delete(@PathVariable String id){
+//        categoryService.delete(Integer.parseInt(id));
+//        return "redirect:/category";
+//    }
 
     @RequestMapping(value = "/get_category", method = RequestMethod.GET)
     public String get_category(Model model) {

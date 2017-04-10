@@ -7,7 +7,7 @@
     <import resource="appContext.xml"/>
 
     <security:http>
-        <security:form-login login-page="/loginpage" login-processing-url="/loginprocesing"/>
+        <security:form-login login-page="/home" login-processing-url="/loginprocesing"/>
 
         <security:intercept-url pattern="admin" method="GET" access="ROLE_ADMIN"/>
 

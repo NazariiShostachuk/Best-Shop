@@ -45,7 +45,7 @@
 
         <div class="formAddCommodity">
         <form:form action="./saveEditedCommodity/${commodityForEdit.id}?${_csrf.parameterName}=${_csrf.token}" method="post" id="formForEditCommodity" enctype="multipart/form-data">
-
+            <div style="width: 250px; color:#500; min-height: 10px;"></div>
             <div class="md-form">
                 <input name="newName" type="text" id="form1" class="form-control" value="${commodityForEdit.name}">
                 <label for="form1" class="">Commodity name</label>
@@ -58,10 +58,16 @@
                 <input name="newDescription" type="text" id="form1" class="form-control" value="${commodityForEdit.description}">
                 <label for="form1" class="">Descriptions</label>
             </div>
+            <br>
+            <br>
+            <br>
             <div class="md-form">
                 <input name="newQuantity" type="number" id="form1" class="form-control" value="${commodityForEdit.quantity}">
                 <label for="form1" class="">Quantity</label>
             </div>
+            <br>
+            <br>
+            <br>
             <div class="col-lg-6 col-sm-6 col-12">
                 <div class="input-group">
                     <label class="input-group-btn">

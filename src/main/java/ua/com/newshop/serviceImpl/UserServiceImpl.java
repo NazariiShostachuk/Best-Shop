@@ -64,10 +64,10 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
         User user = userRepository.findOne(Integer.parseInt(principal.getName()));
 
-        String path = System.getProperty("catalina.home")+"/resources/"
+        String path = System.getProperty("catalina.home")+"/resources/users/"   +  user.getId()
                 + user.getOriginUsername() + "/" + multipartFile.getOriginalFilename();
 
-        user.setPathImage("resources/"+user.getOriginUsername() + "/"
+        user.setPathImage("resources/users"+user.getId()+user.getOriginUsername() + "/"
                 + multipartFile.getOriginalFilename());
 
         File file = new File(path);
@@ -76,7 +76,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
             file.mkdirs();
             try {
                 FileUtils.cleanDirectory
-                        (new File(System.getProperty("catalina.home")+"/resources/" + user.getOriginUsername() + "/"));
+                        (new File(System.getProperty("catalina.home")+"/resources/users/" + user.getId() + user.getOriginUsername() + "/"));
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -95,12 +95,15 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
         int number = Integer.parseInt(quantity);
 
-        commodity.setQuantity(commodity.getQuantity() - number);
+        int originQuantity  = commodity.getQuantity();
+
+        commodity.setQuantity(number);
 
         user.getCommodities().add(commodity);
 
         userRepository.save(user);
 
+        commodity.setQuantity(originQuantity - number);
     }
     public User findUserFetch(int id) {
         return userRepository.findfetchUser(id);
@@ -117,7 +120,5 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         userRepository.save(user);
 
     }
-
-
 }
 

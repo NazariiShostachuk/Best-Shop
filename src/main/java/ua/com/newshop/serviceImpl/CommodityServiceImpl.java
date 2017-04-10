@@ -29,16 +29,17 @@ public class CommodityServiceImpl implements CommodityService{
     public void save(Commodity commodity, MultipartFile multipartFile) {
 
         String path = System.getProperty("catalina.home")+"/resources/"
-                + commodity.getName() + "/" + multipartFile.getOriginalFilename();
 
-        commodity.setPathToImage("resources/"+commodity.getName() + "/" + multipartFile.getOriginalFilename());
+                + commodity.getId() + commodity.getName() + "/" + multipartFile.getOriginalFilename();
+
+        commodity.setPathToImage("resources/"+commodity.getId()+commodity.getName() + "/" + multipartFile.getOriginalFilename());
         File file = new File(path);
 
         try {
             file.mkdirs();
             try {
                 FileUtils.cleanDirectory
-                        (new File(System.getProperty("catalina.home")+"/resources/" + commodity.getName() + "/"));
+                        (new File(System.getProperty("catalina.home")+"/resources/" + commodity.getId() + commodity.getName() + "/"));
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -52,6 +53,8 @@ public class CommodityServiceImpl implements CommodityService{
         return commodityRepository.findAll();
     }
 
+    public List<Commodity>findCommodityFromSubCategoryById(int id){return commodityRepository.findCommodityFromSubCategoryById(id);}
+
     public Commodity findOne(int id) {
         return commodityRepository.findOne(id);
     }
@@ -63,5 +66,6 @@ public class CommodityServiceImpl implements CommodityService{
     public Commodity findByName(String name) {
         return commodityRepository.findByName(name);
     }
+
 
 }

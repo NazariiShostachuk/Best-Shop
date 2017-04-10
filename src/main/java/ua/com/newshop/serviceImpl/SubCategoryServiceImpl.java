@@ -49,6 +49,9 @@ public class SubCategoryServiceImpl implements SubCategoryService{
 
     public List<SubCategory> findSubCategoryValuesFromCategory(String name){
         return subCategoryRepository.findSubCategoryValuesFromCategory(name);}
+
+    public List<SubCategory> findSubCategoryValuesFromCategoryById(int id){
+        return subCategoryRepository.findSubCategoryValuesFromCategoryById(id);}
 }
 
 

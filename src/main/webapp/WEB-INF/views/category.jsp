@@ -39,11 +39,9 @@
             <form:form modelAttribute="category" action="newCategory"  method="post" id="addCateg">
                 <div class="md-form">
                     <form:input path="name" type="text" id="form1" class="form-control"/>
-                    <label for="form1" class="">Cattegory name</label>
+                    <label for="form1" class="">Category name</label>
                 </div>
                 <button type="submit" class="btn btn-primary" id="rebBTN" form="addCateg">Add Category</button>
-
-
             </form:form>
         </div>
     </div>

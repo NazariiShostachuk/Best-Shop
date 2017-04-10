@@ -20,6 +20,8 @@ public interface CommodityService {
 
     Commodity findByName(String name);
 
+    List<Commodity>findCommodityFromSubCategoryById(int id);
+
 
 
 }

@@ -25,9 +25,40 @@
 </head>
 <body>
 
-
 <div class="container">
     <h2>Categories</h2>
+    <%--<form:form name="form1"  modelAttribute="applePost" action="./Apple?${_csrf.parameterName}=${_csrf.token}"   method="post" enctype="multipart/form-data">--%>
+        <%--<h3>Select</h3>--%>
+        <%--<p><input form="form1"  value="Meizu" type="checkbox" name="categoryName" /></p>--%>
+        <%--<p><input path="categoryName"  value="Meizu" type="text" name="categoryName" /></p>--%>
+
+        <%--<input type="submit" value="Submit" name="categoryName">--%>
+        <%--<c:forEach  var="applePost" items="${AllValues}">--%>
+            <%--<tbody>--%>
+            <%--<tr>--%>
+                <%--<th>${applePost.id}</th>--%>
+                <%--<th>${applePost.name}</th>--%>
+            <%--</tr>--%>
+            <%--</tbody>--%>
+        <%--</c:forEach>--%>
+
+    <%--</form:form>--%>
+    <%--<form:form name="form1"  modelAttribute="applePost" action="/Apple" method="post">--%>
+        <%--<h3>Select</h3>--%>
+        <%--&lt;%&ndash;<p><input form="form1"  value="Meizu" type="checkbox" name="categoryName" /></p>&ndash;%&gt;--%>
+        <%--<p><input path="categoryName"  value="Meizu" type="text" name="categoryName" /></p>--%>
+
+        <%--<input type="submit" value="Submit" name="categoryName">--%>
+        <%--<c:forEach  var="applePost" items="${AllValues}">--%>
+            <%--<tbody>--%>
+            <%--<tr>--%>
+                <%--<th>${applePost.id}</th>--%>
+                <%--<th>${applePost.name}</th>--%>
+            <%--</tr>--%>
+            <%--</tbody>--%>
+        <%--</c:forEach>--%>
+
+    <%--</form:form>--%>
 
     <div class="table-responsive">
         <table class="table">
@@ -39,13 +70,30 @@
                 <%--<th>Delete</th>--%>
             </tr>
             </thead>
-            <c:forEach var="apple" items="${oneCatValues}" >
+            <c:forEach var="appleGet" items="${AllCategories}" >
                 <tbody>
                 <tr>
-                    <th>${apple.id}</th>
-                    <th>${apple.name}</th>
+                    <th>${appleGet.id}</th>
+                    <th>${appleGet.name}</th>
+                    <th><a href="allValuesFromSubCategory/${appleGet.id}">All</a></th>
                         <%--<th><a href="editCommodity/${commodity.id}">Edit</a></th>--%>
                         <%--<th><a href="deleteCategory/${category.id}">delete</a></th>--%>
+                <c:forEach var="apGet" items="${AllValuesId}">
+                    <tbody>
+                    <tr>
+                        <th>${apGet.id}</th>
+                        <th>${apGet.name}</th>
+                    </tr>
+                    </tbody>
+                </c:forEach>
+                </tr>
+                </tbody>
+            </c:forEach>
+            <c:forEach var="apGet" items="${AllValues}">
+                <tbody>
+                <tr>
+                    <th>${apGet.id}</th>
+                    <th>${apGet.name}</th>
                 </tr>
                 </tbody>
             </c:forEach>

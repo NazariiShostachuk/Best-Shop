@@ -39,13 +39,16 @@
                 <%--<th>Delete</th>--%>
             </tr>
             </thead>
-            <c:forEach var="category" items="${oneCatValues}" >
+            <form:form action="/Meizu" method="post">
+                <input type="text" id="name" name="name" placeholder="type name"/>
+                <input type="submit" value="send"/>
+            </form:form>
+
+            <c:forEach var="category" items="${oneCatValues}">
                 <tbody>
                 <tr>
                     <th>${category.id}</th>
                     <th>${category.name}</th>
-                        <%--<th><a href="editCommodity/${commodity.id}">Edit</a></th>--%>
-                    <%--<th><a href="deleteCategory/${category.id}">delete</a></th>--%>
                 </tr>
                 </tbody>
             </c:forEach>

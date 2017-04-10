@@ -5,8 +5,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
+import ua.com.newshop.entity.Commodity;
 import ua.com.newshop.entity.User;
 import ua.com.newshop.service.CategoryService;
 import ua.com.newshop.service.CommodityService;
@@ -28,27 +28,25 @@ public class HomeController {
 
     @RequestMapping(value = {"/", "/home"}, method = RequestMethod.GET)
     public String home(Model model){
+        model.addAttribute("combyid", commodityService.findCommodityFromSubCategoryById(1));
         model.addAttribute("commodities", commodityService.findAll());
         model.addAttribute("categ", categoryService.findAll());
         model.addAttribute("categs", categoryService.findOrderByName());
 
+
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String name = auth.getName(); //get logged in username
-
 
         model.addAttribute("username", name);
         if (name.equals("anonymousUser") || name.equals("admin")){
             System.out.println("anonim");
         }else {
-            User user = userService.findUserFetch(Integer.parseInt(name));
             model.addAttribute("usrname", userService.findOne(Integer.parseInt(name)));
-            model.addAttribute("userscp", user);
+            model.addAttribute("userscp", userService.findUserFetch(Integer.parseInt(name)));
         }
+
         return "home";
     }
 
-    @RequestMapping(value = "/admin", method = RequestMethod.GET)
-    public String admin(){
-        return "admin";
-    }
+
 }

@@ -77,12 +77,20 @@ public class UserController {
         return "redirect:/home";
     }
 
+    @RequestMapping(value = "/deleteCommodityFromUserHome/{id}", method = RequestMethod.GET)
+    public String deleteCommodityFromUserHome(Principal principal, @PathVariable String id){
+
+        userService.deleteCommodityFromUser(principal, id);
+
+        return "redirect:/home";
+    }
+
     @RequestMapping(value = "/deleteCommodityFromUser/{id}", method = RequestMethod.GET)
     public String deleteCommodityFromUser(Principal principal, @PathVariable String id){
 
         userService.deleteCommodityFromUser(principal, id);
 
-        return "redirect:/profile";
+        return "redirect:/home";
     }
 
 }

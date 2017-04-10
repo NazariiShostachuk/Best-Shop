@@ -46,9 +46,7 @@
                 </sec:authorize>
                 <sec:authorize access="!isAuthenticated()">
                     <div class="btn-group" id="logBTN">
-
                         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >SIGN IN</button>
-
                         <div class="dropdown-menu" id="logBTN_dropdown">
                             <form:form action="loginprocesing" method="post" id="frmlogjv">
                                 <div class="md-form" id="logBTN_form1">
