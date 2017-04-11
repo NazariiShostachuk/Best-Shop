@@ -36,16 +36,16 @@ public class CommodityController {
                                @RequestParam String subCategoryID,
                                @RequestParam MultipartFile commodityImage) {
         if(bindingResult.hasErrors()){
-            return "commodity";
+            return "admin";
         }
 
         try {
             commodity.setSubCategory(subCategoryService.findOne(Integer.parseInt(subCategoryID)));
         } catch (Exception e) {
-            return "commodity";
+            return "admin";
         }
             commodityService.save(commodity, commodityImage);
-        return "redirect:/commodity";
+        return "redirect:/admin";
     }
 
     @RequestMapping(value = "/editCommodity/{id}", method = RequestMethod.GET)

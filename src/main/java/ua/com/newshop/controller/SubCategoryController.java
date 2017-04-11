@@ -28,19 +28,19 @@ public class SubCategoryController {
         return "subCategory";
     }
 
-    @RequestMapping(value = "/newSubCategory", method = RequestMethod.POST)
-    public String newSubCategory(@ModelAttribute SubCategory subCategory,
-                                 @RequestParam String categoryID){
-        subCategory.setCategory(categoryService.findOne(Integer.parseInt(categoryID)));
-        subCategoryService.save(subCategory);
-        return "redirect:/subCategory";
-    }
+//    @RequestMapping(value = "/newSubCategory", method = RequestMethod.POST)
+//    public String newSubCategory(@ModelAttribute SubCategory subCategory,
+//                                 @RequestParam String categoryID){
+//        subCategory.setCategory(categoryService.findOne(Integer.parseInt(categoryID)));
+//        subCategoryService.save(subCategory);
+//        return "redirect:/subCategory";
+//    }
 
-    @RequestMapping(value = "/deleteSubCategory/{id}", method = RequestMethod.GET)
-    public String delete(@PathVariable String id){
-        subCategoryService.delete(Integer.parseInt(id));
-        return "redirect:/subCategory";
-    }
+//    @RequestMapping(value = "/deleteSubCategory/{id}", method = RequestMethod.GET)
+//    public String delete(@PathVariable String id){
+//        subCategoryService.delete(Integer.parseInt(id));
+//        return "redirect:/subCategory";
+//    }
 
 
 

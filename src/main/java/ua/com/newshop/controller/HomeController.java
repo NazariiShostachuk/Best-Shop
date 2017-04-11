@@ -36,7 +36,7 @@ public class HomeController {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String name = auth.getName(); //get logged in username
-
+        /*User name in nawBar*/
         model.addAttribute("username", name);
         if (name.equals("anonymousUser") || name.equals("admin")){
             System.out.println("anonim");

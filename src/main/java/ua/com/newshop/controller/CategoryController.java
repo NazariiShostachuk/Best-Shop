@@ -45,8 +45,6 @@ public class CategoryController {
     }
 
 
-
-
 //    @RequestMapping(value = "/getOrder", method = RequestMethod.POST)
 //    public String getOrder(Principal principal, @RequestParam String commodityId,
 //                           @RequestParam String quantity){

@@ -8,7 +8,9 @@
     <title>Admin Panel BestShop</title>
     <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
     <link href="/css/admin.css" rel="stylesheet">
+
 </head>
+
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
@@ -18,7 +20,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/admin">Admin Panel</a>
+            <a class="navbar-brand" href="/">Admin Panel</a>
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
@@ -42,44 +44,10 @@
     </div>
 
     <%-- *******BODY******* --%>
-    <div class="col-md-9">
-        <h1 class="page-header">Apple</h1>
-        <ul class="breadcrumb">
-            <li><span class="glyphicon glyphicon-home">&nbsp;</span><a href="/admin">Home</a></li>
-            <li><a href="/Apple">Apple</a></li>
-        </ul>
-        <table class="table table-hover">
-            <thead>
-                <th>&nbsp;</th>
-                <th class="text-center">ID</th>
-                <th>Title</th>
-                <%--<th class="text-center">Author</th>--%>
-                <th>Delete</th>
-            </thead>
-        <tbody>
-        <c:forEach var="Apples" items="${AllValuesFromApple}" >
-            <tr>
-                <td><input type="checkbox" /></td>
-                <td class="text-center">${Apples.id}</td>
-                <td width="70%"><a href="/Apple/${Apples.id}">${Apples.name}</a></td>
-                <%--<td class="text-center" width="10%">Admin</td>--%>
-                <th><a href="deleteSubCategory/${Apples.id}" class="textBlack">delete</a></th>
-            </tr>
-        </c:forEach>
-        <!-- START CONTENT END -->
-        <!-- DUMP CONTENT END -->
-        </tbody>
-        </table>
-    </div>
+
 </div>
 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>
+
 </body>
 </html>
-
-
-
-
-
-
-
