@@ -33,93 +33,20 @@
 <div class="container-fluid">
     <div class="col-md-2">
         <div id="sidebar">
-            <%--<div class="container-fluid tmargin">--%>
-                <%--<div class="input-group">--%>
-                    <%--<input type="text" class="form-control" placeholder="Search..." />--%>
-                    <%--<span class="input-group-btn">--%>
-                        <%--<button class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>--%>
-                    <%--</span>--%>
-                <%--</div>--%>
-            <%--</div>--%>
-
             <ul class="nav navbar-nav side-bar">
                 <li class="side-bar tmargin" ><a  data-toggle="modal" data-target="#modal-newCategory" href="#"><span class="glyphicon glyphicon-list">&nbsp;</span>New Category</a></li>
                 <li class="side-bar" ><a  data-toggle="modal" data-target="#modal-newSubCategory" href="#"><span class="glyphicon glyphicon-list">&nbsp;</span>New Sub Category</a></li>
                 <li class="side-bar" ><a  data-toggle="modal" data-target="#modal-newCommodity" href="#"><span class="glyphicon glyphicon-list">&nbsp;</span>New Commodity</a></li>
-                <%--<li class="side-bar"><a href="#"><span class="glyphicon glyphicon-flag">&nbsp;</span>Purok</a></li>--%>
-                <%--<li class="side-bar"><a href="#"><span class="glyphicon glyphicon-star">&nbsp;</span>Blotter</a></li>--%>
-                <%--<li class="side-bar"><a href="#"><span class="glyphicon glyphicon-certificate">&nbsp;</span>Officials</a></li>--%>
-                <%--<li class="side-bar"><a href="#"><span class="glyphicon glyphicon-signal">&nbsp;</span>Statistics</a></li>--%>
-                <%--<li class="side-bar"><a href="#"><span class="glyphicon glyphicon-cog">&nbsp;</span>Settings</a></li>--%>
-
+                <li class="side-bar" ><a  data-toggle="modal" data-target="#modal-newCommodity" href="#"></a></li>
+                <c:forEach var="categories" items="${allCategories}" >
+                    <li class="side-bar"><a href="/cat${categories.id}"><span class="glyphicon glyphicon-flag">&nbsp;</span>${categories.name}</a></li>
+                </c:forEach>
             </ul>
         </div>
     </div>
 
     <%-- *******BODY******* --%>
     <div class="col-md-9">
-        <h1 class="page-header">Admin Panel</h1>
-        <%-- All Categories  --%>
-        <div class="card card-1">
-            <div id="AllCategories1">
-                <h2 class="textBlack">Categories</h2>
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <%--<th>Edit</th>--%>
-                            <th>Delete</th>
-                        </tr>
-                        </thead>
-                        <c:forEach var="categories" items="${allCategories}" >
-                            <tbody>
-                            <tr>
-                                <th>${categories.id}</th>
-                                <th><a href="/${categories.name}" class="textBlack">${categories.name}</a></th>
-                                    <%--<th><a href="editCommodity/${commodity.id}">Edit</a></th>--%>
-                                <th><a href="deleteCategory/${categories.id}" class="textBlack">delete</a></th>
-                            </tr>
-                            </tbody>
-                        </c:forEach>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-
-        <%--<ul class="breadcrumb">--%>
-            <%--<li><span class="glyphicon glyphicon-home">&nbsp;</span>Home</li>--%>
-            <%--<li><a href="#">Dashboard</a></li>--%>
-        <%--</ul>--%>
-        <%--<table class="table table-hover">--%>
-            <%--<thead>--%>
-            <%--<th>&nbsp;</th>--%>
-            <%--<th class="text-center">#</th>--%>
-            <%--<th>Title</th>--%>
-            <%--<th class="text-center">Author</th>--%>
-            <%--<th>Status</th>--%>
-            <%--</thead>--%>
-            <%--<tbody>--%>
-            <%--<!----%>
-              <%--<tr>--%>
-                <%--<td><input type="checkbox" /></td>--%>
-                <%--<td class="text-center">1</td>--%>
-                <%--<td width="70%">Lorem ipsum dolor sit amet, consectetur adipisicing elit...</td>--%>
-                <%--<td class="text-center" width="10%">Admin</td>--%>
-                <%--<td><span class="label label-info">Pending</span></td>--%>
-              <%--</tr>--%>
-    <%---->--%>
-            <%--<!-- START CONTENT END -->--%>
-
-            <%--<!-- DUMP CONTENT END -->--%>
-
-            <%--</tbody>--%>
-
-        <%--</table>--%>
-   <%----%>
-
         <%-- All Categories  --%>
         <div class="card card-1">
             <div id="AllCategories">

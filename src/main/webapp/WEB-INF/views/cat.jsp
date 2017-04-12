@@ -32,15 +32,16 @@
     <div class="col-md-2">
         <div id="sidebar">
             <ul class="nav navbar-nav side-bar">
-                <li class="side-bar"><a href="#"><span class="glyphicon glyphicon-flag">&nbsp;</span>Purok</a></li>
-                <li class="side-bar"><a href="#"><span class="glyphicon glyphicon-star">&nbsp;</span>Blotter</a></li>
-                <li class="side-bar"><a href="#"><span class="glyphicon glyphicon-certificate">&nbsp;</span>Officials</a></li>
-                <li class="side-bar"><a href="#"><span class="glyphicon glyphicon-signal">&nbsp;</span>Statistics</a></li>
-                <li class="side-bar"><a href="#"><span class="glyphicon glyphicon-cog">&nbsp;</span>Settings</a></li>
+                <li class="side-bar tmargin" ><a  data-toggle="modal" data-target="#modal-newCategory" href="#"><span class="glyphicon glyphicon-list">&nbsp;</span>New Category</a></li>
+                <li class="side-bar" ><a  data-toggle="modal" data-target="#modal-newSubCategory" href="#"><span class="glyphicon glyphicon-list">&nbsp;</span>New Sub Category</a></li>
+                <li class="side-bar" ><a  data-toggle="modal" data-target="#modal-newCommodity" href="#"><span class="glyphicon glyphicon-list">&nbsp;</span>New Commodity</a></li>
+                <li class="side-bar" ><a  data-toggle="modal" data-target="#modal-newCommodity" href="#"></a></li>
+                <c:forEach var="categories" items="${allCategories}" >
+                    <li class="side-bar"><a href="/cat${categories.id}"><span class="glyphicon glyphicon-flag">&nbsp;</span>${categories.name}</a></li>
+                </c:forEach>
             </ul>
         </div>
     </div>
-
     <%-- *******BODY******* --%>
     <div class="col-md-9">
         <h1 class="page-header">Apple</h1>
@@ -50,25 +51,25 @@
         </ul>
         <table class="table table-hover">
             <thead>
-                <th>&nbsp;</th>
-                <th class="text-center">ID</th>
-                <th>Title</th>
-                <%--<th class="text-center">Author</th>--%>
-                <th>Delete</th>
+            <th>&nbsp;</th>
+            <th class="text-center">ID</th>
+            <th>Title</th>
+            <%--<th class="text-center">Author</th>--%>
+            <th>Delete</th>
             </thead>
-        <tbody>
-        <c:forEach var="Apples" items="${AllValuesFromApple}" >
-            <tr>
-                <td><input type="checkbox" /></td>
-                <td class="text-center">${Apples.id}</td>
-                <td width="70%"><a href="/Apple/${Apples.id}">${Apples.name}</a></td>
-                <%--<td class="text-center" width="10%">Admin</td>--%>
-                <th><a href="deleteSubCategory/${Apples.id}" class="textBlack">delete</a></th>
-            </tr>
-        </c:forEach>
-        <!-- START CONTENT END -->
-        <!-- DUMP CONTENT END -->
-        </tbody>
+            <tbody>
+            <c:forEach var="VallCatById" items="${AllValuesFromCatById}" >
+                <tr>
+                    <td><input type="checkbox" /></td>
+                    <td class="text-center">${VallCatById.id}</td>
+                    <td width="70%"><a href="cat${catName.id}/scat${VallCatById.id}">${VallCatById.name}</a></td>
+                        <%--<td class="text-center" width="10%">Admin</td>--%>
+                    <th><a href="deleteSubCategory/${VallCatById.id}" class="textBlack">delete</a></th>
+                </tr>
+            </c:forEach>
+            <!-- START CONTENT END -->
+            <!-- DUMP CONTENT END -->
+            </tbody>
         </table>
     </div>
 </div>
@@ -76,10 +77,3 @@
 <script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>
 </body>
 </html>
-
-
-
-
-
-
-

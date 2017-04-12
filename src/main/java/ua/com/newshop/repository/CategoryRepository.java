@@ -19,6 +19,4 @@ public interface CategoryRepository extends JpaRepository<Category, Integer> {
     @Query("SELECT cat FROM Category cat ORDER BY name")
     List<Category> findOrderByName();
 
-
-
 }
