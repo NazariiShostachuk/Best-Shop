@@ -1,6 +1,7 @@
 package ua.com.newshop.service;
 
 import org.springframework.web.multipart.MultipartFile;
+import ua.com.newshop.entity.Role;
 import ua.com.newshop.entity.User;
 
 import java.security.Principal;
@@ -26,5 +27,6 @@ public interface UserService {
     void getOrder(Principal principal, String commodityId, String quantity);
 
     void deleteCommodityFromUser(Principal principal, String id);
+
 
 }

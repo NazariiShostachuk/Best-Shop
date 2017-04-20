@@ -37,7 +37,7 @@
                 <li class="side-bar tmargin" ><a  data-toggle="modal" data-target="#modal-newCategory" href="#"><span class="glyphicon glyphicon-list">&nbsp;</span>New Category</a></li>
                 <li class="side-bar" ><a  data-toggle="modal" data-target="#modal-newSubCategory" href="#"><span class="glyphicon glyphicon-list">&nbsp;</span>New Sub Category</a></li>
                 <li class="side-bar" ><a  data-toggle="modal" data-target="#modal-newCommodity" href="#"><span class="glyphicon glyphicon-list">&nbsp;</span>New Commodity</a></li>
-                <li class="side-bar" ><a  data-toggle="modal" data-target="#modal-newCommodity" href="#"></a></li>
+                <li class="side-bar" ><a href="#"></a></li>
                 <c:forEach var="categories" items="${allCategories}" >
                     <li class="side-bar"><a href="/cat${categories.id}"><span class="glyphicon glyphicon-flag">&nbsp;</span>${categories.name}</a></li>
                 </c:forEach>
@@ -46,11 +46,11 @@
     </div>
     <%-- *******BODY******* --%>
     <div class="col-md-9">
-        <h1 class="page-header">Apple ${SubCateg.name}</h1>
+        <h1 class="page-header">${CatName.name} ${subCatName.name}</h1>
         <ul class="breadcrumb">
             <li><span class="glyphicon glyphicon-home">&nbsp;</span><a href="/admin">Home</a></li>
-            <li><a href="/Apple">Apple</a></li>
-            <li><a href="">${SubCateg.name}</a></li>
+            <li><a href="/cat${CatName.id}">${CatName.name}</a></li>
+            <li><a href="/cat${CatName.id}/scat${subCatName.id}">${subCatName.name}</a></li>
         </ul>
         <a style="float: right" data-toggle="modal" data-target="#modal-newCommodity" href="#"><span class="glyphicon glyphicon-list" >&nbsp;</span>New Commodity</a>
         <table class="table table-hover">
@@ -71,15 +71,15 @@
             <%--<td class="text-center" width="10%">Admin</td>--%>
             <%--<td><span class="label label-info">Pending</span></td>--%>
             <%--</tr>--%>
-            <c:forEach var="comm" items="${combyid}" >
+            <c:forEach var="comm" items="${AllCommodityValuesId}" >
                 <tr>
                     <td><input type="checkbox" /></td>
                     <td class="text-center">${comm.id}</td>
                     <td>${comm.name}</td>
                     <td>${comm.price}</td>
                     <td>${comm.quantity}</td>
-                    <td><a href="${comm.subCategory.id}/edit${comm.id}">Edit</a></td>
-                    <td><a href="${comm.subCategory.id}/delete${comm.id}">Delete</a></td>
+                    <td><a href="/cat${CatName.id}/scat${comm.subCategory.id}/comm${comm.id}edit">Edit</a></td>
+                    <td><a href="/cat${CatName.id}/scat${comm.subCategory.id}/comm${comm.id}del">Delete</a></td>
                 </tr>
             </c:forEach>
             <!-- START CONTENT END -->

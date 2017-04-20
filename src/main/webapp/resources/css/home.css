@@ -1,0 +1,13 @@
+@media only screen and (max-width : 992px) {
+    header, main, footer {
+        padding-left: 0;
+    }
+}
+#sidebarUserBackground{ height: 100%; }
+.main{ padding: 10px; }
+#dropdown_nav{
+    margin: 0 15px 0 0 ;
+}
+#passwordUp,#usernameUp,#emailUp,#phoneUp ,.row,input{
+    margin:0;
+}

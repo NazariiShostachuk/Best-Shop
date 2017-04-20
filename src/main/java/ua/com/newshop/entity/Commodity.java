@@ -21,6 +21,7 @@ public class Commodity {
     private int id;
     @NotNull(message="Имя должно быть задано")
     private String name;
+    private String type;
     private String description;
     private double price;
     private int quantity;
@@ -119,13 +120,25 @@ public class Commodity {
         this.pathToImage = pathToImage;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     @Override
     public String toString() {
         return "Commodity{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", type='" + type + '\'' +
                 ", description='" + description + '\'' +
                 ", price=" + price +
                 ", quantity=" + quantity +
+                ", pathToImage='" + pathToImage + '\'' +
+                ", subCategory=" + subCategory +
                 '}';
     }
 }

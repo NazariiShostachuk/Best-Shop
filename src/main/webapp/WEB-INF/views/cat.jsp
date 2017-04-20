@@ -35,7 +35,7 @@
                 <li class="side-bar tmargin" ><a  data-toggle="modal" data-target="#modal-newCategory" href="#"><span class="glyphicon glyphicon-list">&nbsp;</span>New Category</a></li>
                 <li class="side-bar" ><a  data-toggle="modal" data-target="#modal-newSubCategory" href="#"><span class="glyphicon glyphicon-list">&nbsp;</span>New Sub Category</a></li>
                 <li class="side-bar" ><a  data-toggle="modal" data-target="#modal-newCommodity" href="#"><span class="glyphicon glyphicon-list">&nbsp;</span>New Commodity</a></li>
-                <li class="side-bar" ><a  data-toggle="modal" data-target="#modal-newCommodity" href="#"></a></li>
+                <li class="side-bar" ><a  href="#"></a></li>
                 <c:forEach var="categories" items="${allCategories}" >
                     <li class="side-bar"><a href="/cat${categories.id}"><span class="glyphicon glyphicon-flag">&nbsp;</span>${categories.name}</a></li>
                 </c:forEach>
@@ -44,10 +44,10 @@
     </div>
     <%-- *******BODY******* --%>
     <div class="col-md-9">
-        <h1 class="page-header">Apple</h1>
+        <h1 class="page-header">${Category.name}</h1>
         <ul class="breadcrumb">
             <li><span class="glyphicon glyphicon-home">&nbsp;</span><a href="/admin">Home</a></li>
-            <li><a href="/Apple">Apple</a></li>
+            <li><a href="/cat${Category.id}">${Category.name}</a></li>
         </ul>
         <table class="table table-hover">
             <thead>
@@ -62,7 +62,7 @@
                 <tr>
                     <td><input type="checkbox" /></td>
                     <td class="text-center">${VallCatById.id}</td>
-                    <td width="70%"><a href="cat${catName.id}/scat${VallCatById.id}">${VallCatById.name}</a></td>
+                    <td width="70%"><a href="cat${Category.id}/scat${VallCatById.id}">${VallCatById.name}</a></td>
                         <%--<td class="text-center" width="10%">Admin</td>--%>
                     <th><a href="deleteSubCategory/${VallCatById.id}" class="textBlack">delete</a></th>
                 </tr>

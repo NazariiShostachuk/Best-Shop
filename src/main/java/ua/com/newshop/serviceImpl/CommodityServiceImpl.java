@@ -28,9 +28,7 @@ public class CommodityServiceImpl implements CommodityService{
 
     public void save(Commodity commodity, MultipartFile multipartFile) {
 
-        String path = System.getProperty("catalina.home")+"/resources/"
-
-                + commodity.getId() + commodity.getName() + "/" + multipartFile.getOriginalFilename();
+        String path = System.getProperty("catalina.home")+"/resources/" + commodity.getId() + commodity.getName() + "/" + multipartFile.getOriginalFilename();
 
         commodity.setPathToImage("resources/"+commodity.getId()+commodity.getName() + "/" + multipartFile.getOriginalFilename());
         File file = new File(path);

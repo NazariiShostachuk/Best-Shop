@@ -2,15 +2,13 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-<html >
+<html>
 <head>
     <meta charset="UTF-8">
     <title>Admin Panel BestShop</title>
     <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
     <link href="/css/admin.css" rel="stylesheet">
-
 </head>
-
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
@@ -44,40 +42,11 @@
             </ul>
         </div>
     </div>
-
     <%-- *******BODY******* --%>
-    <div class="col-md-9">
-        <%-- All Categories  --%>
-        <div class="card card-1">
-            <div id="AllCategories">
-                <h2 class="textBlack">Categories</h2>
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <%--<th>Edit</th>--%>
-                            <th>Delete</th>
-                        </tr>
-                        </thead>
-                        <c:forEach var="categories" items="${allCategories}" >
-                            <tbody>
-                            <tr>
-                                <th>${categories.id}</th>
-                                <th><a href="#${categories.name}" class="textBlack">${categories.name}</a></th>
-                                    <%--<th><a href="editCommodity/${commodity.id}">Edit</a></th>--%>
-                                <th><a href="deleteCategory/${categories.id}" class="textBlack">delete</a></th>
-                            </tr>
-                            </tbody>
-                        </c:forEach>
-                    </table>
-                </div>
-            </div>
-        </div>
-
+    <div class="col-md-7">
+        <button class="button btn"><a href="/admin/user"></a></button>
+        <a href="/admin/users">Users</a>
         <%-- All SubCategories From Apple --%>
-
         <div class="card card-1" style="display: block">
             <div id="Apple">
                 <h2 class="textBlack">Apple</h2>
@@ -105,9 +74,7 @@
                 </div>
             </div>
         </div>
-
         <%-- All SubCategories From Meizu --%>
-
         <div class="card card-1" style="display: block">
             <div id="Meizu">
                 <h2 class="textBlack">Meizu</h2>
@@ -135,9 +102,7 @@
                 </div>
             </div>
         </div>
-
         <%-- All SubCategories From Samsung --%>
-
         <div class="card card-1" style="display: block">
             <div id="Samsung">
                 <h2 class="textBlack">Samsung</h2>
@@ -165,9 +130,7 @@
                 </div>
             </div>
         </div>
-
         <%-- All SubCategories From Xiaomi --%>
-
         <div class="card card-1" style="display: block">
             <div id="Xiaomi">
                 <h2 class="textBlack">Xiaomi</h2>
@@ -195,9 +158,7 @@
                 </div>
             </div>
         </div>
-
         <%-- All SubCategories From Nokia --%>
-
         <div class="card card-1" style="display: block">
             <div id="Nokia">
                 <h2 class="textBlack">Nokia</h2>
@@ -225,22 +186,6 @@
                 </div>
             </div>
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         <!-- ****************************************************************************************************** -->
         <!-- Modal New Category -->
         <div class="modal fade modal-ext" id="modal-newCategory" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -256,7 +201,6 @@
                     </div>
                     <!--Body-->
                         <div class="modal-body">
-
                             <form:form data-toggle="validator" method="post" action="/newCategory" role="form" id="addNewCategoryForm">
                                 <div class="form-group row ">
                                     <label for="inputName" class="col-sm-2 col-form-label">Name</label>
@@ -276,7 +220,6 @@
                 </div>
                 <!--/.Content-->
         </div>
-
         <!-- Modal New SUB Category -->
         <div class="modal fade modal-ext" id="modal-newSubCategory" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -322,7 +265,6 @@
                     <!--/.Content-->
                 </div>
         </div>
-
         <!-- Modal New Commodity -->
         <div class="modal fade modal-ext" id="modal-newCommodity" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -337,7 +279,6 @@
                     </div>
                     <!--Body-->
                     <div class="modal-body">
-
                         <form:form modelAttribute="newCommodity" action="./newCommodity?${_csrf.parameterName}=${_csrf.token}" method="post"
                                    enctype="multipart/form-data" id="AddNewCommodity">
 
@@ -353,52 +294,30 @@
                                     <input type="hidden" path="description" class="form-control" id="inputCubCategoryID" placeholder="" required>
                                 </div>
                             </div>
-
-                            <%--<form class="form-inline" name="subCategoryID">--%>
-                            <%--<c:forEach var="subCategory" items="${AllSubCategories}">--%>
-                            <%--<fieldset class="form-group" name="subCategoryID">--%>
-                            <%--<input value="${subCategory.id}" name="subCategoryID" type="radio" id="radio${subCategory.id}">--%>
-                            <%--<label for="radio${subCategory.id}">${subCategory.category.name} => ${subCategory.name}</label>--%>
-                            <%--</fieldset>--%>
-                            <%--</c:forEach>--%>
-                            <%--</form>--%>
-
-                            <%--It`s Working--%>
-                            <%--<select name="subCategoryID">--%>
-                                <%--<option>choose subCategory</option>--%>
-                                <%--<c:forEach var="subCategory" items="${AllSubCategories}">--%>
-                                    <%--<option value="${subCategory.id}">${subCategory.category.name} => ${subCategory.name}</option>--%>
-                                <%--</c:forEach>--%>
-                            <%--</select>--%>
-
                             <div class="form-group row">
                                 <label for="inputNameCommodity" class="col-sm-3 col-form-label">Name</label>
                                 <div class="col-sm-9"  >
                                     <input type="text" path="name" name="name" class="form-control" id="inputNameCommodity" placeholder="Case" required>
                                 </div>
                             </div>
-
                             <div class="form-group row">
                                 <label for="inputDescriptionsCommodity" class="col-sm-3 col-form-label">Descriptions</label>
                                 <div class="col-sm-9"  >
                                     <input type="text" path="description" name="description" class="form-control" id="inputDescriptionsCommodity" placeholder="Very good commodity" required>
                                 </div>
                             </div>
-
                             <div class="form-group row">
                                 <label for="inputPriceCommodity" class="col-sm-3 col-form-label">Price</label>
                                 <div class="col-sm-9"  >
                                     <input type="number" path="price" name="price" class="form-control" id="inputPriceCommodity" placeholder="300" required>
                                 </div>
                             </div>
-
                             <div class="form-group row">
                                 <label for="inputQuantityCommodity" class="col-sm-3 col-form-label">Quantity</label>
                                 <div class="col-sm-9"  >
                                     <input type="number" path="quantity" name="quantity" class="form-control" id="inputQuantityCommodity" placeholder="5" required>
                                 </div>
                             </div>
-
                             <div class="form-group row">
                                 <label for="inputImageCommodity" class="col-sm-3 col-form-label">Image</label>
                                 <div class="col-sm-9">
@@ -424,19 +343,39 @@
 
         <!-- Modal Cart -->
     </div>
+    <%-- All Categories  --%>
+    <div class="col-md-2" style="position: static">
+        <div class="card card-1">
+            <div id="AllCategories1">
+                <h2 class="textBlack">Categories</h2>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <%--<th>Edit</th>--%>
+                            <th>Delete</th>
+                        </tr>
+                        </thead>
+                        <c:forEach var="categories" items="${allCategories}" >
+                            <tbody>
+                            <tr>
+                                <th>${categories.id}</th>
+                                <th><a href="#${categories.name}" class="textBlack">${categories.name}</a></th>
+                                    <%--<th><a href="editCommodity/${commodity.id}">Edit</a></th>--%>
+                                <th><a href="deleteCategory/${categories.id}" class="textBlack">delete</a></th>
+                            </tr>
+                            </tbody>
+                        </c:forEach>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-
 </div>
 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>
-
-
 </body>
 </html>
-
-
-
-
-
-
-

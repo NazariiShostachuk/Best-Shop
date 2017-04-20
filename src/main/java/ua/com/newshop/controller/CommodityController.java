@@ -55,26 +55,26 @@ public class CommodityController {
         return "editCommodity";
     }
 
-    @RequestMapping(value = "/editCommodity/saveEditedCommodity/{id}", method = RequestMethod.POST)
-    public String editComm(@PathVariable String id,
-                           @RequestParam String newName,
-                           @RequestParam String newDescription,
-                           @RequestParam String newPrice,
-                           @RequestParam String newQuantity,
-                           @RequestParam MultipartFile newCommodityImage) {
-        Commodity commodity = commodityService.findOne(Integer.parseInt(id));
-        commodity.setName(newName);
-        commodity.setDescription(newDescription);
-        commodity.setPrice(Double.parseDouble(newPrice));
-        commodity.setQuantity(Integer.parseInt(newQuantity));
-
-        try {
-            commodityService.save(commodity, newCommodityImage);
-        } catch (Exception e) {
-            return "error";
-        }
-        return "redirect:/commodity";
-    }
+//    @RequestMapping(value = "/editCommodity/saveEditedCommodity/{id}", method = RequestMethod.POST)
+//    public String editCommo(@PathVariable String id,
+//                           @RequestParam String newName,
+//                           @RequestParam String newDescription,
+//                           @RequestParam String newPrice,
+//                           @RequestParam String newQuantity,
+//                           @RequestParam MultipartFile newCommodityImage) {
+//        Commodity commodity = commodityService.findOne(Integer.parseInt(id));
+//        commodity.setName(newName);
+//        commodity.setDescription(newDescription);
+//        commodity.setPrice(Double.parseDouble(newPrice));
+//        commodity.setQuantity(Integer.parseInt(newQuantity));
+//
+//        try {
+//            commodityService.save(commodity, newCommodityImage);
+//        } catch (Exception e) {
+//            return "error";
+//        }
+//        return "redirect:/commodity";
+//    }
 
     @RequestMapping(value = "/get_commodity", method = RequestMethod.GET)
     public String get_commodity(Model model) {

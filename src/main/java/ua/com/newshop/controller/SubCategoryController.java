@@ -41,10 +41,4 @@ public class SubCategoryController {
 //        subCategoryService.delete(Integer.parseInt(id));
 //        return "redirect:/subCategory";
 //    }
-
-
-
-
-
 }
-

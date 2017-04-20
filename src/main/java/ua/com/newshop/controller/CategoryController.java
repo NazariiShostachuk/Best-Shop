@@ -19,12 +19,12 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
-//    @RequestMapping(value = "/category", method = RequestMethod.GET)
-//    public String category(Model model) {
-//        model.addAttribute("category", new Category());
-//        model.addAttribute("categories", categoryService.findAll());
-//        return "category";
-//    }
+    @RequestMapping(value = "/category", method = RequestMethod.GET)
+    public String category(Model model) {
+        model.addAttribute("category", new Category());
+        model.addAttribute("categories", categoryService.findAll());
+        return "category";
+    }
 
 //    @RequestMapping(value = "/newCategory", method = RequestMethod.POST)
 //    public String newCategory(@ModelAttribute Category category) {

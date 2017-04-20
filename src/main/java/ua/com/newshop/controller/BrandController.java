@@ -30,147 +30,72 @@ public class BrandController {
 
     @RequestMapping(value = "/cat{cid}", method = RequestMethod.GET)
     public String cat(Model model,@PathVariable String cid){
-        /*View ALL Categories*/
-
+        /* Get Category name, id */
+        model.addAttribute("Category", categoryService.findOne(Integer.parseInt(cid)));
+        /* View ALL Categories in Sidebar */
         model.addAttribute("allCategories", categoryService.findAll());
+        /* Get All SubCategories from Category*/
         model.addAttribute("AllValuesFromCatById", subCategoryService.findSubCategoryValuesFromCategoryById(Integer.parseInt(cid)));
         return "/cat" ;
     }
 
-    @RequestMapping(value = "cat/scat{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/cat{cid}/scat{id}", method = RequestMethod.GET)
     public String catSubCat(@ModelAttribute SubCategory subCategory ,
                             Model model,
-                            @PathVariable String id){
-
+                            @PathVariable String id,
+                            @PathVariable String cid){
+        /* Get Category name and id */
+        model.addAttribute("CatName", categoryService.findOne(Integer.parseInt(cid)));
+        /* Get SubCategory name and id */
+        model.addAttribute("subCatName", subCategoryService.findOne(Integer.parseInt(id)));
+        /* View in Sidebar All Categories */
         model.addAttribute("allCategories", categoryService.findAll());
-        model.addAttribute("catName", categoryService.findOne(Integer.parseInt(id)));
-        model.addAttribute("AllValuesId", subCategoryService.findSubCategoryValuesFromCategoryById(Integer.parseInt(id)));
-
+        /* View All Values From Category */
+        model.addAttribute("AllCommodityValuesId", commodityService.findCommodityFromSubCategoryById(Integer.parseInt(id)));
         return "/subcat" ;
     }
 
-//    @RequestMapping(value = "/Apple", method = RequestMethod.GET)
-//    public String appleGet(Model model){
-//        /*View ALL Categories*/
-//        model.addAttribute("allCategories", categoryService.findAll());
-//
-//        String apple= "Apple";
-//        model.addAttribute("AllValuesFromApple", subCategoryService.findSubCategoryValuesFromCategory(apple));
-//        return "/Apple" ;
-//    }
-//
-//    @RequestMapping(value ={"/Apple/{id}"}, method = RequestMethod.GET)
-//    public String appleGetFull(@ModelAttribute Category category , @ModelAttribute SubCategory subCategory , @ModelAttribute Commodity commodity, Model model, @PathVariable String id){
-//        category = categoryService.findOne(Integer.parseInt(id));
-//        /*Creating new Commodity*/
-//        model.addAttribute("newCommodity", new Commodity());
-//        model.addAttribute("allCategories", categoryService.findAll());
-//        model.addAttribute("SubCateg", subCategoryService.findOne(Integer.parseInt(id)));
-//        model.addAttribute("AllValuesId", subCategoryService.findSubCategoryValuesFromCategoryById(Integer.parseInt(id)));
-//        model.addAttribute("combyid", commodityService.findCommodityFromSubCategoryById(Integer.parseInt(id)));
-//        return "ApplePhoneID" ;
-//    }
-//
-//    @RequestMapping(value = "/Apple/newCommodity", method = RequestMethod.POST)
-//    public String newCommodity(@ModelAttribute @Valid Commodity commodity, BindingResult bindingResult,
-//                               @RequestParam String subCategoryID,
-//                               @RequestParam MultipartFile commodityImage) {
-//        if(bindingResult.hasErrors()){
-//            return "admin";
-//        }
-//
-//        try {
-//            commodity.setSubCategory(subCategoryService.findOne(Integer.parseInt(subCategoryID)));
-//        } catch (Exception e) {
-//            return "admin";
-//        }
-//        commodityService.save(commodity, commodityImage);
-//        return "redirect:/Apple";
-//    }
-//    @RequestMapping(value = "/Apple/{id}/edit{id}", method = RequestMethod.GET)
-//    public String appleGetCommodity(@ModelAttribute Category category , @ModelAttribute SubCategory subCategory , @ModelAttribute Commodity commodity, Model model, @PathVariable String id){
-//        category = categoryService.findOne(Integer.parseInt(id));
-//        model.addAttribute("combyid", commodityService.findCommodityFromSubCategoryById(Integer.parseInt(id)));
-//        return "ApplePhoneIDCommodityID" ;
-//    }
-//    @RequestMapping(value = "/Apple/{id}/delete{id}", method = RequestMethod.GET)
-//    public String deleteCommodity(@PathVariable String id) {
-//        commodityService.delete(Integer.parseInt(id));
-//        return "redirect:/Apple/";
-//    }
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//    @RequestMapping(value = "/Meizu", method = RequestMethod.GET)
-//    public String meizuGet(Model model){
-//        model.addAttribute("AllCategories", categoryService.findAll());
-//
-//        return "/Meizu" ;
-//    }
-//
-//    @RequestMapping(value = "/Meizu", method = RequestMethod.POST)
-//    public String meizuPost(Model model,@ModelAttribute Category category){
-//
-//        model.addAttribute("oneCatValues", subCategoryService.findSubCategoryValuesFromCategory(category.getName()));
-//        return "/Meizu" ;
-//    }
-//
-//    @RequestMapping(value = "/Samsung", method = RequestMethod.GET)
-//    public String samsungGet(Model model){
-//        /*Виводимо всі категорії для того щоб передати в метод POST*/
-//        model.addAttribute("AllCategories", categoryService.findAll());
-//        return "/Samsung" ;
-//    }
-//
-//    @RequestMapping(value = "/Samsung", method = RequestMethod.POST)
-//    public String samsungPost(Model model,@ModelAttribute Category category,@ModelAttribute SubCategory subCategory){
-//
-//        model.addAttribute("commodities", commodityService.findCommodityFromSubCategoryById(subCategory.getId()));
-//        /*Виводимо всі категорії*/
-//        model.addAttribute("AllCategories", categoryService.findAll());
-//        /*Виводимо всі моделі обраного бренду*/
-//        model.addAttribute("oneCatValues", subCategoryService.findSubCategoryValuesFromCategory(category.getName()));
-//        return "/Samsung" ;
-//    }
-//
-//    @RequestMapping(value = "/allValuesFromSubCategory/{id}", method = RequestMethod.GET)
-//    public String appleGetVall( Model model, @PathVariable String id){
-//
-//        model.addAttribute("AllFech", subCategoryService.findAllfetch());
-//
-//        /*name of subCategory ~ Meizu, Apple*/
-////        Category category = categoryService.findOne(Integer.parseInt(id));
-//        model.addAttribute("SubCateg", categoryService.findOne(Integer.parseInt(id)));
-//        /* Values from SubCategory ~ MX4, Iphone 5 */
-//        model.addAttribute("AllValuesId", subCategoryService.findSubCategoryValuesFromCategoryById(Integer.parseInt(id)));
-//        return "/search" ;
-//    }
-//
-//    @RequestMapping(value = "/Xiaomi", method = RequestMethod.GET)
-//    public String xiaomi(Model model){
-//        String name = "Xiaomi";
-//        model.addAttribute("oneCatValues", subCategoryService.findSubCategoryValuesFromCategory(name));
-//        return "/Xiaomi" ;
-//    }
-//
-//    @RequestMapping(value = "/search", method = RequestMethod.GET)
-//    @ResponseBody
-//    public String ajaxTest(Model model){
-//        String name = "Xiaomi";
-//        model.addAttribute("oneCatValues", subCategoryService.findSubCategoryValuesFromCategory(name));
-//        return "/search" ;
-//    }
-//    @RequestMapping(value = "/searchs", method = RequestMethod.GET)
-//    public String Searchs(){
-//        return "/searchs";
-//    }
-//
+    @RequestMapping(value = "/cat{cid}/scat{sid}/comm{commid}del", method = RequestMethod.GET)
+    public String deleteCommodity(@PathVariable String cid,@PathVariable String sid,@PathVariable String commid) {
 
+        commodityService.delete(Integer.parseInt(commid));
+
+        return "redirect:/cat{cid}/scat{sid}";
+    }
+
+    @RequestMapping(value = "/cat{cid}/scat{sid}/comm{commid}edit", method = RequestMethod.GET)
+    public String editCommodity(@PathVariable String cid,@PathVariable String sid,@PathVariable String commid, Model model) {
+
+        model.addAttribute("pathImage",commodityService.findOne(Integer.parseInt(commid)).getPathToImage());
+        Commodity commodity = commodityService.findOne(Integer.parseInt(commid));
+        model.addAttribute("EditedCommodity", commodity);
+        return "/editCommodity";
+    }
+
+    @RequestMapping(value = "/cat{cid}/scat{sid}/saveEditedCommodity/{commid}", method = RequestMethod.POST)
+    public String editComm(@PathVariable String cid,
+                           @PathVariable String sid,
+                           @PathVariable String commid,
+                           @RequestParam String newName,
+                           @RequestParam String newDescription,
+                           @RequestParam String newPrice,
+                           @RequestParam String newQuantity,
+                           @RequestParam MultipartFile newCommodityImage) {
+
+        Commodity commodity = commodityService.findOne(Integer.parseInt(commid));
+        commodity.setName(newName);
+        commodity.setDescription(newDescription);
+        commodity.setPrice(Double.parseDouble(newPrice));
+        commodity.setQuantity(Integer.parseInt(newQuantity));
+
+
+
+        try {
+            commodityService.save(commodity, newCommodityImage);
+        } catch (Exception e) {
+            return "error";
+        }
+        return "redirect:/cat{cid}/scat{sid}";
+    }
 
 }

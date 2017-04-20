@@ -1,19 +1,21 @@
 package ua.com.newshop.controller;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import ua.com.newshop.entity.Category;
-import ua.com.newshop.entity.Commodity;
-import ua.com.newshop.entity.SubCategory;
+import ua.com.newshop.entity.*;
 import ua.com.newshop.service.CategoryService;
 import ua.com.newshop.service.CommodityService;
 import ua.com.newshop.service.SubCategoryService;
+import ua.com.newshop.service.UserService;
 
 import javax.validation.Valid;
+
+
 
 /**
  * Created by MackGeeker on 23.03.2017.
@@ -27,9 +29,12 @@ public class AdminController {
     private SubCategoryService subCategoryService;
     @Autowired
     private CommodityService commodityService;
+    @Autowired
+    private UserService userService;
 
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
     public String admin(Model model) {
+
         /*Creating new Category*/
         model.addAttribute("newCategory", new Category());
         /*Creating new SubCategory */
@@ -61,7 +66,32 @@ public class AdminController {
 
         String nokia= "Nokia";
         model.addAttribute("AllValuesFromNokia", subCategoryService.findSubCategoryValuesFromCategory(nokia));
+
         return "/admin";
+    }
+
+    @RequestMapping(value = "/setRoleAdmin{id}", method = RequestMethod.GET)
+    public String setRoll(@PathVariable String id, Model model){
+        User user = userService.findOne(Integer.parseInt(id));
+        user.setRole(Role.ROLE_USER_ADMIN);
+        model.addAttribute("loll", user);
+        return "redirect:/admin/users";
+    }
+
+    @RequestMapping(value = "/admin/users", method = RequestMethod.GET)
+    public String GetRole(Model model){
+        model.addAttribute("allUsers",userService.findAll());
+
+        return "/users";
+    }
+
+    @RequestMapping(value = "/admin/users/{id}", method = RequestMethod.GET)
+    public String GetUserSpecs(Model model, @PathVariable String id){
+
+        model.addAttribute("userSpecs", userService.findOne(Integer.parseInt(id)));
+        model.addAttribute("userSpecsRole", userService.findOne(Integer.parseInt(id)).getRole());
+
+        return "/user";
     }
 
     @RequestMapping(value = "/newCategory", method = RequestMethod.POST)
