@@ -7,9 +7,10 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Best-Shop.com.ua</title>
+    <title>BEST SHOP</title>
     <!-- Material Design Bootstrap -->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link href="/css/materialize.min.css" rel="stylesheet">
     <link href="/css/home.css" rel="stylesheet">
 
@@ -18,9 +19,10 @@
 </head>
 <body>
 <header>
-<nav class="nav-extended">
+<div class="navbar-fixed">
+<nav>
     <div class="nav-wrapper light-blue darken-1">
-        <a href="/" class="brand-logo" style="margin-left: 8px; ">Best-Shop.com.ua</a>
+        <a href="/" class="brand-logo" style="margin-left: 8px; ">Best Shop</a>
         <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
         <a href="#" data-activates="mobile-right-menu" class="button-collapse right"><i class="material-icons">more_vert</i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
@@ -36,39 +38,95 @@
             </sec:authorize>
         </ul>
         <ul class="side-nav" id="mobile-right-menu">
-            <li><a href="sass.html">Sass</a></li>
-            <li><a href="badges.html">Components</a></li>
-            <li><a href="collapsible.html">JavaScript</a></li>
-        </ul>
-    </div>
-    <div class="nav-content blue darken-2">
-        <ul class="tabs tabs-transparent">
-            <li class="tab col s2">
-                <a target="_self" href="/home">Home</a>
-            </li>
-            <li class="tab col s2">
-                <a target="_self" href="/category">Brands:</a>
-            </li>
-            <c:forEach var="cat" items="${categ}">
-            <li class="tab col s2">
-                <a target="_self" href="/category/${cat.id}">${cat.name}</a>
-            </li>
-            </c:forEach>
+            <sec:authorize access="!isAuthenticated()">
+                <li><a href="#modalSignIn" class="modal-trigger">Sign in</a></li>
+                <li><a href="#modalSignUp" class="modal-trigger">Sign up</a></li>
+            </sec:authorize>
+            <sec:authorize access="isAuthenticated()">
+                <li><a href="#" class="dropdown-button" data-activates=''>Hello ${usrname.originUsername}</a></li>
+                <li><a href="#modalCart" class="dropdown-button">Cart</a></li>
+                <li><a href="#" class="button"><form:form action="logout" method="post">
+                    <button class="btn btn-primary blue darken-2" style="margin: 0 auto; padding: 0 8px 0 8px; width: 100%">Logout</button></form:form></a></li>
+            </sec:authorize>
         </ul>
     </div>
 </nav>
+</div>
 </header>
 <main>
-    <%--<div class="row">--%>
-        <%--<div class="col m10">--%>
-            <%--<c:forEach items="${commodities}" var="comm" >--%>
-                <%--${comm.name}<br>--%>
-                <%--${comm.id}<br>--%>
-                <%--${comm.description}<br>--%>
-                <%--${comm.pathToImage}<br>--%>
-            <%--</c:forEach>--%>
-        <%--</div>--%>
-    <%--</div>--%>
+    <div class="row">
+        <div class="col s2 m3" style="padding-left: 3px;">
+            <div class="mySideNav col m2">
+                <div class="collection">
+                    <c:forEach var="cat" items="${categ}">
+                        <a class="collection-item" href="/category/${cat.id}">${cat.name}</a>
+                    </c:forEach>
+                </div>
+            </div>
+        </div>
+        <div class="col s12 m9">
+            <!-- Teal page content  -->
+            <c:forEach items="${commodities}" var="comm" >
+            ${comm.name}<br>
+            ${comm.id}<br>
+            ${comm.description}<br>
+            ${comm.pathToImage}<br>
+            </c:forEach>
+            <c:forEach items="${commodities}" var="comm" >
+                ${comm.name}<br>
+                ${comm.id}<br>
+                ${comm.description}<br>
+                ${comm.pathToImage}<br>
+            </c:forEach>
+            <c:forEach items="${commodities}" var="comm" >
+                ${comm.name}<br>
+                ${comm.id}<br>
+                ${comm.description}<br>
+                ${comm.pathToImage}<br>
+            </c:forEach> <c:forEach items="${commodities}" var="comm" >
+            ${comm.name}<br>
+            ${comm.id}<br>
+            ${comm.description}<br>
+            ${comm.pathToImage}<br>
+        </c:forEach> <c:forEach items="${commodities}" var="comm" >
+            ${comm.name}<br>
+            ${comm.id}<br>
+            ${comm.description}<br>
+            ${comm.pathToImage}<br>
+        </c:forEach> <c:forEach items="${commodities}" var="comm" >
+            ${comm.name}<br>
+            ${comm.id}<br>
+            ${comm.description}<br>
+            ${comm.pathToImage}<br>
+        </c:forEach> <c:forEach items="${commodities}" var="comm" >
+            ${comm.name}<br>
+            ${comm.id}<br>
+            ${comm.description}<br>
+            ${comm.pathToImage}<br>
+        </c:forEach>
+            <c:forEach items="${commodities}" var="comm" >
+                ${comm.name}<br>
+                ${comm.id}<br>
+                ${comm.description}<br>
+                ${comm.pathToImage}<br>
+            </c:forEach>
+            <c:forEach items="${commodities}" var="comm" >
+                ${comm.name}<br>
+                ${comm.id}<br>
+                ${comm.description}<br>
+                ${comm.pathToImage}<br>
+            </c:forEach>
+            <c:forEach items="${commodities}" var="comm" >
+                ${comm.name}<br>
+                ${comm.id}<br>
+                ${comm.description}<br>
+                ${comm.pathToImage}<br>
+            </c:forEach>
+
+        </div>
+
+    </div>
+
 </main>
 
 <!-- Modal Structure -->
@@ -102,7 +160,7 @@
 <div id="modalSignUp" class="modal modal-fixed-footer">
     <div class="modal-content">
         <h4>Sign UP!</h4>
-        <form:form modelAttribute="user" action="registration" method="post" id="regForm">
+        <form:form modelAttribute="" action="registration" method="post" id="regForm">
             <div class="row">
                 <div class="input-field col s12">
                     <input id="usernameUp" path="username"  name="username" type="text" required>
@@ -137,6 +195,7 @@
     </div>
 </div>
 
+<!-- Cart Structure -->
 <div id="modalCart" class="modal modal-fixed-footer">
     <div class="modal-content">
         <h4>Cart</h4>

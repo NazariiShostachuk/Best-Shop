@@ -3,6 +3,13 @@
         padding-left: 0;
     }
 }
+html{
+    background: #ECECEC;
+}
+.navbar-fixed, nav{
+    max-height: 56px;
+    line-height: 56px;
+}
 #sidebarUserBackground{ height: 100%; }
 .main{ padding: 10px; }
 #dropdown_nav{
@@ -10,4 +17,72 @@
 }
 #passwordUp,#usernameUp,#emailUp,#phoneUp ,.row,input{
     margin:0;
+}
+.mySideNav{
+    position: fixed ;
+    padding-left: 0px;
+}
+.mySideNav.col.m2{
+    padding: 0;
+    background: #F3F3F3;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Параметры тени */
+}
+.mySideNav.col.m2 > div {
+    padding: 0;
+    border-left: none;
+    border-right: none;
+}
+.mySideNav.col.m2 > div > a{
+    background: transparent;
+    transition: all 0.3s ease;
+    color: #0a0b0d;
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+}
+.mySideNav.col.m2 > div > a:hover{
+
+}
+
+.subBrands{
+    height: 48px;
+    background: #1976d2  ;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Параметры тени */
+    position: fixed;
+    width: 100%;
+}
+.subBrands > ul {
+    margin: 0 auto;
+
+}
+.subBrands > ul > li {
+    display: inline-block;
+    color: white;
+}
+.subBrands > ul > li:nth-child(1) {
+    display: inline-block;
+    color: white;
+    background: #1565c0  ;
+}
+.subBrands > ul > li:nth-child(even) > i {
+    display: table-caption;
+    color: white;
+    padding-top: 6px ;
+    height: 24px;
+}
+.subBrands > ul > li > a{
+    display: inline-block;
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    color: white;
+    padding: 12px;
+    transition: all 0.3s ease;
+
+}
+
+.subBrands > ul > li > a:hover{
+background: #039be5 ;
+}
+
+#mainBox{
+    padding: 0 0 0 0.35em;
 }

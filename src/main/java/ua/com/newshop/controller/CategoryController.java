@@ -7,6 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ua.com.newshop.entity.Category;
 import ua.com.newshop.service.CategoryService;
+import ua.com.newshop.service.CommodityService;
+import ua.com.newshop.service.SubCategoryService;
 
 import java.security.Principal;
 
@@ -18,12 +20,28 @@ public class CategoryController {
 
     @Autowired
     private CategoryService categoryService;
+    @Autowired
+    private SubCategoryService subCategoryService;
+    @Autowired
+    private CommodityService commodityService;
 
     @RequestMapping(value = "/category", method = RequestMethod.GET)
     public String category(Model model) {
         model.addAttribute("category", new Category());
         model.addAttribute("categories", categoryService.findAll());
         return "category";
+    }
+
+    @RequestMapping(value = "/category/{cid}", method = RequestMethod.GET)
+    public String cat(Model model,@PathVariable String cid){
+        model.addAttribute("commodities", commodityService.findAll());
+        /* Get Category name, id */
+        model.addAttribute("Category", categoryService.findOne(Integer.parseInt(cid)));
+        /* View ALL Categories in Sidebar */
+        model.addAttribute("allCategories", categoryService.findAll());
+        /* Get All SubCategories from Category*/
+        model.addAttribute("AllValuesFromCatById", subCategoryService.findSubCategoryValuesFromCategoryById(Integer.parseInt(cid)));
+        return "category" ;
     }
 
 //    @RequestMapping(value = "/newCategory", method = RequestMethod.POST)
